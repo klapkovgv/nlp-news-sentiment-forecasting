@@ -18,7 +18,7 @@ The approach of integrating NLP review analysis with time series forecasting for
 
 I began by gathering two datasets: news articles and corresponding economic indicators.
 
-The first dataset contains over 12,000 news articles from news media. The raw data had several quality issues (duplicate entries and articles with missing body text), which I resolved through a cleaning.
+The first dataset contains over 12,000 economic news articles from news media. The raw data had several quality issues (duplicate entries and articles with missing body text), which I resolved through a cleaning.
 
 The second dataset covers official inflation statistics. I used monthly consumer price index data from the statistical institute as the target variable for the forecasting pipeline.
 
@@ -27,11 +27,11 @@ The second dataset covers official inflation statistics. I used monthly consumer
 I know that an NLP pipeline requires systematic text preprocessing. According to Tony Guida's *Big Data and Machine Learning in Quantitative Investment*, "any statisctical analysis begins with collecting data" followed by preprocessing to "clean the data and reduce noice where possible". 
 
 I applied the following preprocessing steps:
-* Used the re library to remove non-alphabetic characters and digits
-* Used nltk to filter out stopwords
-* Used simplemma for morphological analysis and lemmatization
+* Used the `re` library to remove non-alphabetic characters and digits
+* Used `nltk` to filter out stopwords
+* Used `simplemma` for morphological analysis and lemmatization
 
-Why `simplemma`? Turkish is an agglutinative language, which makes standard tools like `PorterStemmer` or basic `NLTK` stemmers ineffective. I chose simplemma because it provides high-accuracy lemmatization for Turkish (≈0.89 accuracy), allowing the model to correctly identify word roots.
+Why `simplemma`? The dataset I used consists of Turkish-language economic news, which makes standard lemmatization tools like `PorterStemmer` or basic `NLTK` stemmers ineffective. I chose simplemma because it provides high-accuracy lemmatization for Turkish (≈0.89 accuracy), allowing the model to correctly identify word roots.
 
 Implementation Logic
 ```python
